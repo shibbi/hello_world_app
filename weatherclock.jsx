@@ -23,13 +23,13 @@ var WeatherClock = React.createClass({
     var apiKey = "645c5d39c7603f17e23fcaffcea1a3c1";
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    var params = "lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+    var params = "units=imperial&lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
     $.ajax({
       type: "GET",
       url: "http://api.openweathermap.org/data/2.5/weather?" + params,
       success: function(resp) {
         this.state.weather = resp.weather[0].main;
-        this.state.temp = (resp.main.temp - 273.15).toFixed(0);
+        this.state.temp = resp.main.temp.toFixed(0);
       }.bind(this)
     });
   },
