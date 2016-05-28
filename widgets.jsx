@@ -1,23 +1,19 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Tabs = require('./tabs');
 
 var Widgets = React.createClass({
-  getInitialState: function () {
-    return {status: "initial"};
-  },
-  clickHandler: function() {
-    var newStatus = this.state.status;
-    if (newStatus == "initial") {
-      newStatus = "started";
-    }
-    else {
-      newStatus = "initial";
-    }
-    this.setState({status: newStatus});
-  },
   render: function () {
+    var tabs = [
+      {title: "one", content: "this is article number one"},
+      {title: "two", content: "second article"},
+      {title: "three", content: "third time's the charm!"}
+    ];
+
     return(
-      <div className={this.state.status} onClick={this.clickHandler}>Click here</div>
+      <div>
+        <Tabs tabs={tabs} />
+      </div>
     );
   }
 });
